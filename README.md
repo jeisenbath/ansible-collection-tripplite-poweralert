@@ -51,6 +51,10 @@ ansible-galaxy collection install git+https://github.com/jeisenbath/ansible-coll
 
 See [Ansible Using collections](https://docs.ansible.com/ansible/devel/user_guide/collections_using.html) for more details.
 
+## More Information
+
+Documentation for the [Power Alert Device Manager API](https://assets.tripplite.com/owners-manual/padm20-api-documentation.html).
+
 ## Licensing
 
 <!-- Include the appropriate license information here and a pointer to the full licensing details. If the collection contains modules migrated from the ansible/ansible repo, you must use the same license that existed in the ansible/ansible repo. See the GNU license example below. -->
