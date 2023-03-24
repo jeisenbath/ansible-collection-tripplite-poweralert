@@ -1,4 +1,4 @@
-# Solarwinds Collection for Ansible
+# Tripplite Power Alert Device Manager Collection for Ansible
 <!-- Add CI and code coverage badges here. Samples included below. -->
 
 <!-- Describe the collection and why a user would want to use it. What does the collection do? -->
