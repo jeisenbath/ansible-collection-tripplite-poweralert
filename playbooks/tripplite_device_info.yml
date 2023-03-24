@@ -1,0 +1,24 @@
+---
+- hosts: "{{ poweralert_host }}"
+  connection: local
+  gather_facts: false
+
+  vars:
+    # Create an anchor for hostname and login info
+    tripplite_info: &tripplite_info
+      poweralert_endpoint: "{{ poweralert_host_fqdn }}"
+      username: "{{ tripplite_user }}"
+      password: "{{ tripplite_pass }}"
+
+  tasks:
+  - name: Get info about poweralert device
+    tripplite.poweralert.padm_api:
+      <<: *tripplite_info
+      uri: /api/devices
+      method: get
+    register: tripplite_info
+    delegate_to: localhost
+
+  - name: Show response
+    debug:
+      msg: "{{ tripplite_info }}"

@@ -1,0 +1,16 @@
+---
+namespace: tripplite
+name: poweralert
+version: 1.0.0
+readme: README.md
+authors:
+  - Josh Eisenbath (@jeisenbath)
+description: modules for Tripp Lite PowerAlert Device Manager REST API
+repository: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert
+homepage: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert
+issues: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert/issues
+dependencies: {}
+license:
+  - GPL-3.0-or-later
+build_ignore:
+  - releases
