@@ -1,15 +1,71 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Copyright: (c) 2022, Josh M. Eisenbath <j.m.eisenbath@gmail.com>
+# Copyright: Josh M. Eisenbath <j.m.eisenbath@gmail.com>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
 DOCUMENTATION = r'''
+---
+module: padm_snmp_user
+short_description: Manages SNMP users for a Tripplite Poweralert device
+description:
+    - Manages SNMP v2 users for a Tripplite Poweralert device running PADM API.
+    - Creates or removes, enables or disabled users and manages their community string.
+version_added: 1.0.0
+author:
+    - "Josh Eisenbath (@jeisenbath)"
+options:
+    state:
+        description: Determine if the managed user is present or absent.
+        required: true
+        choices:
+            - present
+            - absent
+    snmp_user:
+        description: SNMP Username to manage.
+        required: true
+        type: str
+    snmp_community:
+        description: SNMP v2 Community string to configure for the snmp user.
+        type: str
+    enabled:
+        description: Determine if the managed snmp user is enabled/disabled.
+        type: bool
+extends_documentation_fragment:
+    - jeisenbath.tripplite.padm_auth_options
+requirements:
+    - requests
 '''
 
-EXAMPLES = r''' # '''
+EXAMPLES = r'''
+---
 
-RETURN = r''' # '''
+- name: Add and enable a user
+  jeisenbath.tripplite.padm_snmp_user:
+    poweralert_endpoint: "{{ padm_device_fqdn }}"
+    username: "{{ tripplite_username }}"
+    password: "{{ tripplite_password }}"
+    state: present
+    snmp_user: "{{ snmp_v2_user }}"
+    snmp_community: "{{ snmp_v2_ro_community_string }}"
+    enabled: true
+  delegate_to: localhost
+
+'''
+
+RETURN = r'''
+response_code:
+    description: HTTP response code of API request.
+    returned: always
+    type: str
+data:
+    description: Returned data from API request.
+    returned: always
+    type: dict
+    '''
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.tripplite.poweralert.plugins.module_utils.padm import Tripplite, tripplite_argument_spec
