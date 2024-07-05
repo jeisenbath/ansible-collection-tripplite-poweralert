@@ -1,0 +1,18 @@
+ancestor: null
+releases:
+  1.0.0:
+    changes:
+      major_changes:
+      - Added module padm_api
+      - Added module padm_snmp_user
+      release_summary: Released 2023-03-23
+    fragments:
+    - changelog_ini.yml
+    modules:
+    - description: Make an HTTP request to a PADM API.
+      name: padm_api
+      namespace: ''
+    - description: Manages SNMP users for a Tripplite Poweralert device.
+      name: padm_snmp_user
+      namespace: ''
+    release_date: '2024-07-05'
