@@ -7,26 +7,23 @@
 
 <!--start collection content-->
 ### Modules
-Name | Description
---- | ---
-tripplite.poweralert.padm_api | Interface with Power Alert Device Manager REST API
-tripplite.poweralert.padm_snmp_user | Manage SNMP users
-
-## Tested with Ansible
-
-<!-- List the versions of Ansible the collection has been tested with. Must match what is in galaxy.yml. -->
-2.9
+|Name                                 | Description                                        |
+|-------------------------------------|----------------------------------------------------|
+| jeisenbath.tripplite.padm_api       | Interface with Power Alert Device Manager REST API |
+| jeisenbath.tripplite.padm_snmp_user | Manage SNMP users                                  |
 
 ## External requirements
 
 <!-- List any external resources the collection depends on, for example minimum versions of an OS, libraries, or utilities. Do not list other Ansible collections here. -->
-pip install requests
+```bash
+pip install -r requirements.yml
+```
 
 ### Installing the Collection from Ansible Galaxy
 
 Before using this collection, you need to install it with the Ansible Galaxy command-line tool:
 ```bash
-ansible-galaxy collection install https://github.com/jeisenbath/ansible-collection-tripplite-poweralert.git
+ansible-galaxy collection install git+https://github.com/jeisenbath/ansible-collection-tripplite-poweralert.git
 ```
 
 You can also include it in a `requirements.yml` file and install it with `ansible-galaxy collection install -r requirements.yml`, using the format:
@@ -35,7 +32,7 @@ You can also include it in a `requirements.yml` file and install it with `ansibl
 collections:
   - name: tripplite.poweralert
     type: git
-    source: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert.git
+    source: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert
 ```
 
 Note that if you install the collection from Ansible Galaxy, it will not be upgraded automatically when you upgrade the `ansible` package. To upgrade the collection to the latest available version, run the following command:
@@ -46,7 +43,7 @@ ansible-galaxy collection install git+https://github.com/jeisenbath/ansible-coll
 You can also install a specific version of the collection, for example, if you need to downgrade when something is broken in the latest version (please report an issue in this repository). Use the following syntax to install version `0.1.0`:
 
 ```bash
-ansible-galaxy collection install git+https://github.com/jeisenbath/ansible-collection-tripplite-poweralert.git:==0.1.0
+ansible-galaxy collection install git+https://github.com/jeisenbath/ansible-collection-tripplite-poweralert.git,v0.1.0
 ```
 
 See [Ansible Using collections](https://docs.ansible.com/ansible/devel/user_guide/collections_using.html) for more details.
