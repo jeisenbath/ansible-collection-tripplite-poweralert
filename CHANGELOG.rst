@@ -4,6 +4,19 @@ Jeisenbath.Tripplite Release Notes
 
 .. contents:: Topics
 
+v1.0.1
+======
+
+Release Summary
+---------------
+
+Released 2024-07-22
+
+Bugfixes
+--------
+
+- corrected import paths after changing collection namespace
+
 v1.0.0
 ======
 

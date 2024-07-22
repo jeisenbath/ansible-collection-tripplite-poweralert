@@ -16,3 +16,11 @@ releases:
       name: padm_snmp_user
       namespace: ''
     release_date: '2024-07-05'
+  1.0.1:
+    changes:
+      bugfixes:
+      - corrected import paths after changing collection namespace
+      release_summary: Released 2024-07-22
+    fragments:
+    - bugfixes.yml
+    release_date: '2024-07-22'
