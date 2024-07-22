@@ -68,7 +68,7 @@ data:
     '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.tripplite.poweralert.plugins.module_utils.padm import Tripplite, tripplite_argument_spec
+from ansible_collections.jeisenbath.tripplite.plugins.module_utils.padm import Tripplite, tripplite_argument_spec
 
 
 def main():
