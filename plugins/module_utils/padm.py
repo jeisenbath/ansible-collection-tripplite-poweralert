@@ -1,20 +1,30 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 # Copyright: (c) 2022, Josh M. Eisenbath <j.m.eisenbath@gmail.com>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
-import requests
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
 import json
 
-requests.packages.urllib3.disable_warnings()
+try:
+    import requests
+    HAS_REQUESTS = True
+    requests.packages.urllib3.disable_warnings()
+except ImportError:
+    HAS_REQUESTS = False
+except Exception:
+    raise Exception
 
-tripplite_argument_spec = dict(
-    poweralert_endpoint=dict(required=True, type='str'),
-    username=dict(required=True, no_log=True, type='str'),
-    password=dict(required=True, no_log=True, type='str'),
-    api_version=dict(required=False, default='1.0.0')
-)
+
+def tripplite_argument_spec():
+    return dict(
+        poweralert_endpoint=dict(required=True, type='str'),
+        username=dict(required=True, no_log=True, type='str'),
+        password=dict(required=True, no_log=True, type='str'),
+        api_version=dict(required=False, default='1.0.0')
+    )
 
 
 class Tripplite:

@@ -21,6 +21,7 @@ options:
     state:
         description: Determine if the managed user is present or absent.
         required: true
+        type: str
         choices:
             - present
             - absent
@@ -42,7 +43,6 @@ requirements:
 
 EXAMPLES = r'''
 ---
-
 - name: Add and enable a user
   jeisenbath.tripplite.padm_snmp_user:
     poweralert_endpoint: "{{ padm_device_fqdn }}"
@@ -53,7 +53,6 @@ EXAMPLES = r'''
     snmp_community: "{{ snmp_v2_ro_community_string }}"
     enabled: true
   delegate_to: localhost
-
 '''
 
 RETURN = r'''
@@ -65,14 +64,14 @@ data:
     description: Returned data from API request.
     returned: always
     type: dict
-    '''
+'''
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.jeisenbath.tripplite.plugins.module_utils.padm import Tripplite, tripplite_argument_spec
 
 
 def main():
-    argument_spec = tripplite_argument_spec
+    argument_spec = tripplite_argument_spec()
     argument_spec.update(
         state=dict(required=True, choices=['present', 'absent']),
         snmp_user=dict(required=True, type='str'),

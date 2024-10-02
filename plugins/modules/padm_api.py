@@ -24,12 +24,13 @@ options:
     method:
         description: HTTP Method to send to URI.
         default: get
+        type: str
         choices:
             - get
             - patch
             - post
     data:
-        description: 
+        description:
             - Data to post/patch to chosen URI.
             - Required when I(method=patch) or I(method=put).
         type: dict
@@ -41,7 +42,6 @@ requirements:
 
 EXAMPLES = r'''
 ---
-
 - name: Get API info from /api/devices
   jeisenbath.tripplite.padm_api:
     poweralert_endpoint: "{{ padm_device_fqdn }}"
@@ -50,7 +50,6 @@ EXAMPLES = r'''
     uri: /api/devices
     method: get
   delegate_to: localhost
-
 '''
 
 RETURN = r'''
@@ -69,7 +68,7 @@ from ansible_collections.jeisenbath.tripplite.plugins.module_utils.padm import T
 
 
 def main():
-    argument_spec = tripplite_argument_spec
+    argument_spec = tripplite_argument_spec()
     argument_spec.update(
         method=dict(required=False, choices=['get', 'post', 'patch'], default='get'),
         uri=dict(required=True, type='str'),
