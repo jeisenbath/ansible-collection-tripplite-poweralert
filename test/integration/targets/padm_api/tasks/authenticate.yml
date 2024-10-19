@@ -1,0 +1,16 @@
+# Basic test to validate we are able to authenticate with API endpoint and return data
+- name: Get /api/devices
+  padm_api:
+    poweralert_endpoint: "{{ tripplite_endpoint }}"
+    username: "{{ tripplite_username }}"
+    password: "{{ tripplite_password }}"
+    uri: /api/devices
+    method: get
+  delegate_to: localhost
+  register: tripplite_devices_0
+
+- debug: tripplite_devices_0
+
+- assert:
+    that:
+      - tripplite_devices_0.response_code == 200

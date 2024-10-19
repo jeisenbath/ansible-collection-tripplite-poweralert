@@ -1,0 +1,5 @@
+# Tests for padm_api module
+
+- include_tasks: "{{ item }}"
+  loop:
+    - authenticate.yml
