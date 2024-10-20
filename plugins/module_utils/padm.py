@@ -7,6 +7,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 import json
+from ansible.module_utils.basic import env_fallback
 
 try:
     import requests
@@ -20,9 +21,9 @@ except Exception:
 
 def tripplite_argument_spec():
     return dict(
-        poweralert_endpoint=dict(required=True, type='str'),
-        username=dict(required=True, no_log=True, type='str'),
-        password=dict(required=True, no_log=True, type='str'),
+        poweralert_endpoint=dict(fallback=(env_fallback, ['POWERALERT_ENDPOINT']), required=True, type='str'),
+        username=dict(fallback=(env_fallback, ['POWERALERT_USERNAME']), required=True, no_log=True, type='str'),
+        password=dict(fallback=(env_fallback, ['POWERALERT_PASSWORD']), required=True, no_log=True, type='str'),
         api_version=dict(required=False, default='1.0.0')
     )
 

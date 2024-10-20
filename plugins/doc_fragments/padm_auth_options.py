@@ -13,15 +13,21 @@ class ModuleDocFragment(object):
     DOCUMENTATION = r"""
 options:
     poweralert_endpoint:
-        description: The IP address or FQDN of the Tripplite Poweralert device.
+        description: 
+          - The IP address or FQDN of the Tripplite Poweralert device.
+          - If not defined in the task, the value of E(POWERALERT_ENDPOINT) will be used instead.
         required: true
         type: str
     username:
-        description: The username for the Tripplite Poweralert device.
+        description: 
+          - The username for the Tripplite Poweralert device.
+          - If not defined in the task, the value of E(POWERALERT_USERNAME) will be used instead.
         required: true
         type: str
     password:
-        description: The password to authenticate with to the Tripplite Poweralert device.
+        description: 
+          - The password to authenticate with to the Tripplite Poweralert device.
+          - If not defined in the task, the value of E(POWERALERT_PASSWORD) will be used instead.
         required: true
         type: str
     api_version:
