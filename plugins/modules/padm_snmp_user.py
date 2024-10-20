@@ -89,7 +89,7 @@ def main():
     except Exception as auth_exception:
         module.fail_json(msg='Failed to authenticate. Exception: {0}'.format(str(auth_exception)))
 
-    user_url = '/api/snmpv1v2users/{}'.format(module.params['snmp_user'])
+    user_url = '/api/snmpv1v2users/{0}'.format(module.params['snmp_user'])
     get_user = tripplite.api_get(user_url, token)
     if module.params['state'] == 'present':
         if get_user:
