@@ -13,7 +13,7 @@ class ModuleDocFragment(object):
     DOCUMENTATION = r"""
 options:
     poweralert_endpoint:
-        description: 
+        description:
           - The IP address or FQDN of the Tripplite Poweralert device.
           - If not defined in the task, the value of E(POWERALERT_ENDPOINT) will be used instead.
         required: false
