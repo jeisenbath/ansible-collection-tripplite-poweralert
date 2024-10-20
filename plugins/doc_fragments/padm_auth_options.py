@@ -19,13 +19,13 @@ options:
         required: false
         type: str
     username:
-        description: 
+        description:
           - The username for the Tripplite Poweralert device.
           - If not defined in the task, the value of E(POWERALERT_USERNAME) will be used instead.
         required: false
         type: str
     password:
-        description: 
+        description:
           - The password to authenticate with to the Tripplite Poweralert device.
           - If not defined in the task, the value of E(POWERALERT_PASSWORD) will be used instead.
         required: false
