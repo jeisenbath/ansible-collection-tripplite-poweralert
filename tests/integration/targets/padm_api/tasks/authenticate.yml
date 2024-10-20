@@ -9,7 +9,7 @@
   delegate_to: localhost
   register: tripplite_devices_0
 
-- debug: tripplite_devices_0
+- debug: var=tripplite_devices_0
 
 - assert:
     that:
