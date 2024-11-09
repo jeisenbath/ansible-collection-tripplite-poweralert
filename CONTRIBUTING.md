@@ -6,12 +6,14 @@ It is highly recommended to set up a python virtual environment for development.
 Use the [Ansible Release and Maintenance](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html) to determine the oldest supported python version matching the current minimum ansible version from meta/runtime.yml.  
 1. Install the ansible-core version matching the minimum ansible version from meta/runtime.yml.  
 2. Install other python package requirements from requirements.txt.  
-3. Create a fork of this repository, and clone it to your ansible collection path.  
+3. Create a fork of this repository, and clone it to your ansible collection path.
+   - Checkout the devel- branch of the current major version.
 
 ```
 $ mkdir -p ~/.ansible/collections/ansible_collections/jeisenbath
 $ git clone *your_repo* ~/.ansible/collections/ansible_collections/jeisenbath/tripplite
 $ cd ~/.ansible/collections/ansible_collections/jeisenbath/tripplite
+$ git checkout devel-1.x
 ```
 
 ### Testing your code
