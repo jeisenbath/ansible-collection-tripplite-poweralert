@@ -1,0 +1,43 @@
+- name: Create snmp user (check mode)
+  jeisenbath.tripplite.padm_snmp_user:
+    poweralert_endpoint: "{{ padm_test_poweralert_endpoint }}"
+    username: "{{ padm_test_poweralert_username }}"
+    password: "{{ padm_test_poweralert_password }}"
+    snmp_user: padm_test_snmp_user
+    snmp_community: padm_test_snmp_community
+    enabled: true
+    state: present
+  delegate_to: localhost
+  register: snmp2_user_create_00
+  check_mode: true
+
+- name: Create snmp user
+  jeisenbath.tripplite.padm_snmp_user:
+    poweralert_endpoint: "{{ padm_test_poweralert_endpoint }}"
+    username: "{{ padm_test_poweralert_username }}"
+    password: "{{ padm_test_poweralert_password }}"
+    snmp_user: padm_test_snmp_user
+    snmp_community: padm_test_snmp_community
+    enabled: true
+    state: present
+  delegate_to: localhost
+  register: snmp2_user_create_01
+
+- name: Create snmp user (idempotence)
+  jeisenbath.tripplite.padm_snmp_user:
+    poweralert_endpoint: "{{ padm_test_poweralert_endpoint }}"
+    username: "{{ padm_test_poweralert_username }}"
+    password: "{{ padm_test_poweralert_password }}"
+    snmp_user: padm_test_snmp_user
+    snmp_community: padm_test_snmp_community
+    enabled: true
+    state: present
+  delegate_to: localhost
+  register: snmp2_user_create_02
+
+- name: Create snmp user asserts
+  ansible.builtin.assert:
+    that:
+      - snmp2_user_create_00.changed
+      - snmp2_user_create_01.changed
+      - not snmp2_user_create_02.changed
