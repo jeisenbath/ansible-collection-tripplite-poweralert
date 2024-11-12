@@ -93,3 +93,11 @@ class Tripplite:
         r = requests.get(url, headers=headers, verify=False)
 
         return r.status_code, json.loads(r.text)
+
+    def api_delete(self, uri, token):
+        headers = self._create_headers(token)
+        url = "https://{0}{1}?validation=false".format(self.poweralert_endpoint, uri)
+
+        r = requests.delete(url, headers=headers, verify=False)
+
+        return r.status_code, json.loads(r.text)
