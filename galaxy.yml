@@ -9,6 +9,9 @@ description: Modules for Tripp Lite PowerAlert Device Manager REST API
 repository: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert
 homepage: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert
 issues: https://github.com/jeisenbath/ansible-collection-tripplite-poweralert/issues
+tags:
+  - tripplite
+  - poweralert
 dependencies: {}
 license:
   - GPL-3.0-or-later
