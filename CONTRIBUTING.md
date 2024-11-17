@@ -35,7 +35,7 @@ All changes MUST pass an ansible-sanity test.
 
 #### Major changes
 
-Major changes include new modules and plugins.  
+Major changes include new modules and plugins, or new options for existing ones.  
 Major change PRs must:
 - Include a changelog fragment with a major_changes section.
 - Include an integration test for new modules.
@@ -50,7 +50,7 @@ New modules should:
 
 #### Minor changes
 
-Minor changes include new (non-required) parameters for modules, new roles or example playbooks, or documentation updates.  
+Minor changes include new roles or example playbooks, or documentation updates.  
 Minor change PRs must:
 - Include a changelog fragment with a minor_changes section.
 - Pass existing integration tests.
