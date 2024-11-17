@@ -38,6 +38,7 @@ options:
         type: bool
         required: false
         default: false
+        version_added: 1.0.2
     enabled:
         description: Determine if the managed snmp user is enabled/disabled.
         type: bool
