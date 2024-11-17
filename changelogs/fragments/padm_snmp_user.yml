@@ -1,0 +1,3 @@
+major_changes:
+  - Add idempotence, check mode support, absent state to padm_snmp_user
+  - Add api_delete function to support absent state

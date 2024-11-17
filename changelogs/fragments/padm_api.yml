@@ -1,0 +1,4 @@
+bugfixes:
+  - Remove check mode support from padm_api
+major_changes:
+  - padm_api module - Add delete choice for method option

@@ -1,0 +1,5 @@
+# Tests for padm_snmp_user module
+
+- include_tasks: "{{ item }}"
+  loop:
+    - snmp2_user.yml

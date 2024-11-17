@@ -1,15 +1,13 @@
 # Basic test to validate we are able to authenticate with API endpoint and return data
 - name: Get /api/devices
   padm_api:
-    poweralert_endpoint: "{{ poweralert_endpoint }}"
-    username: "{{ poweralert_username }}"
-    password: "{{ poweralert_password }}"
+    poweralert_endpoint: "{{ padm_test_poweralert_endpoint }}"
+    username: "{{ padm_test_poweralert_username }}"
+    password: "{{ padm_test_poweralert_password }}"
     uri: /api/devices
     method: get
   delegate_to: localhost
   register: tripplite_devices_0
-
-- debug: var=tripplite_devices_0
 
 - assert:
     that:

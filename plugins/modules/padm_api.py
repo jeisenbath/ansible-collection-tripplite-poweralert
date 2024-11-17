@@ -29,6 +29,7 @@ options:
             - get
             - patch
             - post
+            - delete
     data:
         description:
             - Data to post/patch to chosen URI.
@@ -70,39 +71,39 @@ from ansible_collections.jeisenbath.tripplite.plugins.module_utils.padm import T
 def main():
     argument_spec = tripplite_argument_spec()
     argument_spec.update(
-        method=dict(required=False, choices=['get', 'post', 'patch'], default='get'),
+        method=dict(required=False, choices=['get', 'post', 'patch', 'delete'], default='get'),
         uri=dict(required=True, type='str'),
         data=dict(required=False, type='dict'),
     )
     module = AnsibleModule(
         argument_spec,
-        supports_check_mode=True,
         required_if=[
             ('method', ['post', 'patch'], ['data'])
         ]
     )
 
     tripplite = Tripplite(module.params['poweralert_endpoint'], module.params['api_version'])
+    changed = False
     try:
         token, refresh_token = tripplite.get_auth_token(module.params['username'], module.params['password'])
     except Exception as auth_exception:
         module.fail_json(msg='Failed to authenticate. Exception: {0}'.format(str(auth_exception)))
 
-    if module.params['method'] == 'get':
-        status, response_data = tripplite.api_get(module.params['uri'], token)
-        tripplite.log_out(refresh_token)
-        module.exit_json(changed=True, response_code=status, data=response_data)
-    elif module.params['method'] == 'post':
-        status, response_data = tripplite.api_post(module.params['uri'], token, module.params['data'])
-        tripplite.log_out(refresh_token)
-        module.exit_json(changed=True, response_code=status, data=response_data)
-    elif module.params['method'] == 'patch':
-        status, response_data = tripplite.api_patch(module.params['uri'], token, module.params['data'])
-        tripplite.log_out(refresh_token)
-        module.exit_json(changed=True, response_code=status, data=response_data)
+    try:
+        if module.params['method'] == 'get':
+            response_code, response_data = tripplite.api_get(module.params['uri'], token)
+        elif module.params['method'] == 'post':
+            response_code, response_data = tripplite.api_post(module.params['uri'], token, module.params['data'])
+        elif module.params['method'] == 'patch':
+            response_code, response_data = tripplite.api_patch(module.params['uri'], token, module.params['data'])
+        elif module.params['method'] == 'delete':
+            response_code, response_data = tripplite.api_delete(module.params['uri'], token)
+        changed = True
+    except Exception as PadmException:
+        module.fail_json(msg='PADM API failure: {0}'.format(PadmException))
 
     tripplite.log_out(refresh_token)
-    module.exit_json(changed=False)
+    module.exit_json(changed=changed, response_code=response_code, data=response_data)
 
 
 if __name__ == "__main__":
