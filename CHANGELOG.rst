@@ -4,6 +4,26 @@ Jeisenbath.Tripplite Release Notes
 
 .. contents:: Topics
 
+v1.1.0
+======
+
+Release Summary
+---------------
+
+Released 2024-11-17
+
+Major Changes
+-------------
+
+- Add api_delete function to support absent state
+- Add idempotence, check mode support, absent state to padm_snmp_user
+- padm_api module - Add delete choice for method option
+
+Bugfixes
+--------
+
+- Remove check mode support from padm_api
+
 v1.0.1
 ======
 

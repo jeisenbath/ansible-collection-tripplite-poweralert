@@ -24,3 +24,17 @@ releases:
     fragments:
     - bugfixes.yml
     release_date: '2024-07-22'
+  1.1.0:
+    changes:
+      bugfixes:
+      - Remove check mode support from padm_api
+      major_changes:
+      - Add api_delete function to support absent state
+      - Add idempotence, check mode support, absent state to padm_snmp_user
+      - padm_api module - Add delete choice for method option
+      release_summary: 'Released 2024-11-17'
+    fragments:
+    - padm_api.yml
+    - padm_snmp_user.yml
+    - release.yml
+    release_date: '2024-11-17'
