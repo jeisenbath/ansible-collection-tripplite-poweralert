@@ -28,10 +28,11 @@ $ git checkout devel-1.x
 
 ### Pre-requisites for new pull requests
 
-All pull requests should be submitted to the devel branch corresponding to the current major version.  
-Pull requests should not include changes to the changelog itself, this will be done by maintainer when merging upstream.  
-Pull requests should not include changes to galaxy.yml version, nor a build of the collection. This will be done by the maintainer when merging upstream.  
-All changes MUST pass an ansible-sanity test.  
+All pull requests must:
+- Be submitted to the devel branch corresponding to the current major version.  
+- pass an ansible-sanity test.  
+- Not include changes to the changelog itself, this will be done by maintainer when merging upstream.  
+- Not include changes to galaxy.yml version, nor a build of the collection. This will be done by the maintainer when merging upstream.  
 
 #### Major changes
 
@@ -39,12 +40,17 @@ Major changes include new modules and plugins, or new options for existing ones.
 Major change PRs must:
 - Include a changelog fragment with a major_changes section.
 - Include an integration test for new modules.
+- Include updates to integration test if including new options.
+- Only include one new feature per PR.
+Major change PRs should:
+- Have either a corresponding open issue or discussion. This is to help ensure some degree of discussion available to all.
 New modules should:
 - Import and use Tripplite from module_utils to manage API connection.
 - Import and use tripplite_argument_spec from module_utils, and use corresponding document fragment.
 - Include an integration test which tests for:
   - Check mode.
   - Present and absent for state based modules.
+  - Updating options for state based modules when state=present.
   - All expected return values for info based modules.
   - Idempotence.
 
@@ -53,20 +59,16 @@ New modules should:
 Minor changes include new roles or example playbooks, or documentation updates.  
 Minor change PRs must:
 - Include a changelog fragment with a minor_changes section.
-- Pass existing integration tests.
 Minor change PRs should:
-- Include updates to integration test if including new parameters.
-- Have either a corresponding open issue or discussion. This is to help ensure some degree of discussion available to all.
-- Only update one module, role, or playbook per PR.
-  - Exceptions may exist, such as when documentation is updated to reflect a shared resource.
+- Only create or update one feature per PR.
 
 #### Bugfixes
 
-Bugfix PRs should:
-- Have a corresponding open issue. This is to help confirm the bug is reproducable and not simply an issue with environment.
 Bugfix PRs must:
 - Include a changelog fragment with a bugfixes section.
 - Not include any new features.
+Bugfix PRs should:
+- Have a corresponding open issue. This is to help confirm the bug is reproducable and not simply an issue with environment.
 
 ## Reporting Issues
 
