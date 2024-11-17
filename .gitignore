@@ -1,0 +1,3 @@
+tests/output
+tests/integration/integration_config.yml
+plugins/doc_fragments/__pycache__/

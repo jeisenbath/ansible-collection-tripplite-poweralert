@@ -1,0 +1,4 @@
+---
+padm_test_poweralert_endpoint: "{{ poweralert_endpoint }}"
+padm_test_poweralert_username: "{{ poweralert_username }}"
+padm_test_poweralert_password: "{{ poweralert_password }}"
