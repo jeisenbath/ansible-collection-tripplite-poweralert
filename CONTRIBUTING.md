@@ -20,7 +20,9 @@ $ git checkout devel-1.x
 
 1. Change directory to the collection's root.  
 2. Run ansible-test sanity and correct any errors.  
-3. Prepare integration tests by editing the test/integration/integration_config.yml **DO NOT COMMIT THESE CHANGES**  
+3. Prepare and run integration tests  
+    - Copying the test/integration/integration_config_example.yml into integration_config.yml
+    - Update the values in integration_config.yml to match your testing environment  
     - If your change includes any files from module_utils, run a full integration test with ansible-test integration.  
     - If you are motifying a single module, or creating a new one, run ansible-test integration *target* to test only that specific resource.  
 
@@ -30,7 +32,7 @@ $ git checkout devel-1.x
 
 All pull requests must:
 - Be submitted to the devel branch corresponding to the current major version.  
-- pass an ansible-sanity test.  
+- Pass an ansible-sanity test.  
 - Not include changes to the changelog itself, this will be done by maintainer when merging upstream.  
 - Not include changes to galaxy.yml version, nor a build of the collection. This will be done by the maintainer when merging upstream.  
 
@@ -41,10 +43,12 @@ Major change PRs must:
 - Include a changelog fragment with a major_changes section.
 - Include an integration test for new modules.
 - Include updates to integration test if including new options.
-- Only include one new feature per PR.
+- Only include one new feature per PR.  
+
 Major change PRs should:
-- Have either a corresponding open issue or discussion. This is to help ensure some degree of discussion available to all.
-New modules should:
+- Have either a corresponding open issue or discussion. This is to help ensure some degree of discussion available to all.  
+
+New modules should:  
 - Import and use Tripplite from module_utils to manage API connection.
 - Import and use tripplite_argument_spec from module_utils, and use corresponding document fragment.
 - Include an integration test which tests for:
@@ -66,7 +70,8 @@ Minor change PRs should:
 
 Bugfix PRs must:
 - Include a changelog fragment with a bugfixes section.
-- Not include any new features.
+- Not include any new features.  
+
 Bugfix PRs should:
 - Have a corresponding open issue. This is to help confirm the bug is reproducable and not simply an issue with environment.
 
