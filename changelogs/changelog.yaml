@@ -32,9 +32,21 @@ releases:
       - Add api_delete function to support absent state
       - Add idempotence, check mode support, absent state to padm_snmp_user
       - padm_api module - Add delete choice for method option
-      release_summary: 'Released 2024-11-17'
+      release_summary: Released 2024-11-17
     fragments:
     - padm_api.yml
     - padm_snmp_user.yml
     - release.yml
     release_date: '2024-11-17'
+  1.2.0:
+    changes:
+      major_changes:
+      - padm_dns module added to manage network static dns servers
+      release_summary: Released 2025-01-30
+    fragments:
+    - network_module.yml
+    modules:
+    - description: Manages DNS servers for a Tripplite Poweralert device.
+      name: padm_dns
+      namespace: ''
+    release_date: '2025-01-30'

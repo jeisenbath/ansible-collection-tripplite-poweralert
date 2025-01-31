@@ -12,7 +12,7 @@
 
   tasks:
   - name: Reboot poweralert device
-    tripplite.poweralert.padm_api:
+    jeisenbath.tripplite.padm_api:
       <<: *tripplite_info
       uri: /api/system_reboot
       method: post
