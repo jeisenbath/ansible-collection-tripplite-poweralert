@@ -16,6 +16,11 @@ plugins:
       name: padm_api
       namespace: ''
       version_added: 1.0.0
+    padm_dns:
+      description: Manages DNS servers for a Tripplite Poweralert device
+      name: padm_dns
+      namespace: ''
+      version_added: 1.2.0
     padm_snmp_user:
       description: Manages SNMP users for a Tripplite Poweralert device
       name: padm_snmp_user
@@ -26,4 +31,4 @@ plugins:
   strategy: {}
   test: {}
   vars: {}
-version: 1.1.0
+version: 1.2.0

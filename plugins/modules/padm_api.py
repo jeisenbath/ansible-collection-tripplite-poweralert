@@ -89,6 +89,8 @@ def main():
     except Exception as auth_exception:
         module.fail_json(msg='Failed to authenticate. Exception: {0}'.format(str(auth_exception)))
 
+    response_code = ""
+    response_data = {}
     try:
         if module.params['method'] == 'get':
             response_code, response_data = tripplite.api_get(module.params['uri'], token)
