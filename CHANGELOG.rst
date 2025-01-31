@@ -4,6 +4,24 @@ Jeisenbath.Tripplite Release Notes
 
 .. contents:: Topics
 
+v1.2.0
+======
+
+Release Summary
+---------------
+
+Released 2025-01-30
+
+Major Changes
+-------------
+
+- padm_dns module added to manage network static dns servers
+
+New Modules
+-----------
+
+- jeisenbath.tripplite.padm_dns - Manages DNS servers for a Tripplite Poweralert device.
+
 v1.1.0
 ======
 
