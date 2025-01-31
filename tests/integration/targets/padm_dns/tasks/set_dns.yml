@@ -1,0 +1,57 @@
+- name: Set dns servers (check mode)
+  padm_dns: &set_primary
+    poweralert_endpoint: "{{ padm_test_poweralert_endpoint }}"
+    username: "{{ padm_test_poweralert_username }}"
+    password: "{{ padm_test_poweralert_password }}"
+    manual_dns: true
+    primary_dns: 127.0.0.1
+    secondary_dns: 8.8.8.8
+    tertiary_dns: 8.8.4.4
+  delegate_to: localhost
+  register: set_primary_01
+  check_mode: true
+
+- name: Set dns servers
+  padm_dns:
+    <<: *set_primary
+  delegate_to: localhost
+  register: set_primary_02
+
+- name: Wait for changes to apply
+  padm_api:
+    poweralert_endpoint: "{{ padm_test_poweralert_endpoint }}"
+    username: "{{ padm_test_poweralert_username }}"
+    password: "{{ padm_test_poweralert_password }}"
+    uri: /api/network_config/dns
+    method: get
+  delegate_to: localhost
+  register: waitfor
+  until: waitfor.response_code == 200
+  retries: 18
+  delay: 10
+
+- name: Set dns servers (idempotence) (check)
+  padm_dns:
+    <<: *set_primary
+  delegate_to: localhost
+  register: set_primary_03
+  check_mode: true
+
+- name: Set dns servers (idempotence)
+  padm_dns:
+    <<: *set_primary
+  delegate_to: localhost
+  register: set_primary_04
+
+- name: Set DNS asserts
+  ansible.builtin.assert:
+    that:
+      - set_primary_01.changed
+      - set_primary_02.changed
+      - not set_primary_03.changed
+      - not set_primary_04.changed
+      - set_primary_02.data.data.attributes.manual_dns
+      - set_primary_02.data.data.attributes.primary_dns == '127.0.0.1'
+      - set_primary_02.data.data.attributes.secondary_dns == '8.8.8.8'
+      - set_primary_02.data.data.attributes.tertiary_dns == '8.8.4.4'
+...

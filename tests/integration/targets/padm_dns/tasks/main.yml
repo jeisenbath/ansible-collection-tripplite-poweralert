@@ -1,0 +1,6 @@
+# Tests for padm_dns module
+
+- include_tasks: "{{ item }}"
+  loop:
+    - set_dns.yml
+    - clear_dns.yml
